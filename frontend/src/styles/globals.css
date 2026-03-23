@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-surface-1 backdrop-blur-xl border border-border rounded-3xl;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  .glass-card-hover:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .mode-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl font-semibold text-sm
+           bg-accent text-white transition-all duration-200;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(108, 99, 255, 0.3);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium text-sm
+           text-text-secondary transition-all duration-200;
+  }
+  .btn-ghost:hover {
+    @apply bg-surface-2 text-text-primary;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-2xl bg-surface-2 border border-border text-text-primary
+           placeholder:text-text-muted text-sm font-body transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent/40;
+  }
+
+  .section-title {
+    @apply text-xs font-bold uppercase tracking-[0.15em] text-text-muted;
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(
+      90deg,
+      var(--surface-2) 0%,
+      var(--surface-3) 50%,
+      var(--surface-2) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Mode-specific ring colors */
+  .mode-ring-work { --mode-color: rgba(232, 168, 56, 0.3); }
+  .mode-ring-focus { --mode-color: rgba(108, 99, 255, 0.3); }
+  .mode-ring-rest { --mode-color: rgba(67, 181, 129, 0.3); }
+  .mode-ring-exercise { --mode-color: rgba(255, 107, 107, 0.3); }
+  .mode-ring-commute { --mode-color: rgba(79, 195, 247, 0.3); }
+  .mode-ring-meeting { --mode-color: rgba(255, 138, 101, 0.3); }
+  .mode-ring-default { --mode-color: rgba(144, 164, 174, 0.3); }
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  background: var(--surface-2) !important;
+  border-radius: 1.5rem;
+  font-family: 'Pretendard', 'DM Sans', sans-serif !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--surface-1) !important;
+  color: var(--text-primary) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--surface-1) !important;
+}

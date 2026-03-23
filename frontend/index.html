@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f0f0e" />
+    <title>AI Location Agent — 스마트 위치 대시보드</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- Pretendard (Korean) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+      :root {
+        --surface-0: #fafaf8;
+        --surface-1: #ffffff;
+        --surface-2: #f5f5f0;
+        --surface-3: #eeeee9;
+        --accent: #6C63FF;
+        --accent-soft: rgba(108, 99, 255, 0.08);
+        --text-primary: #1a1a18;
+        --text-secondary: #5e5c50;
+        --text-muted: #94927c;
+        --border-color: rgba(0, 0, 0, 0.06);
+      }
+
+      .dark {
+        --surface-0: #0f0f0e;
+        --surface-1: #1a1a18;
+        --surface-2: #232320;
+        --surface-3: #2d2d28;
+        --accent: #8B83FF;
+        --accent-soft: rgba(139, 131, 255, 0.1);
+        --text-primary: #eeeee9;
+        --text-secondary: #a8a793;
+        --text-muted: #716e5f;
+        --border-color: rgba(255, 255, 255, 0.06);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Pretendard', 'DM Sans', sans-serif;
+        background: var(--surface-0);
+        color: var(--text-primary);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+      /* Noise texture overlay */
+      .noise-overlay::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.025;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        z-index: 9999;
+      }
+    </style>
+  </head>
+  <body class="noise-overlay">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
